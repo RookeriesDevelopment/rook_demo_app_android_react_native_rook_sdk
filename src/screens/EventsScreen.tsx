@@ -5,8 +5,8 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   View,
+  Text,
 } from 'react-native';
-import { Text } from 'react-native';
 import { useRookSyncEvents } from 'react-native-rook-sdk-health-connect';
 
 export const EventsScreen = () => {

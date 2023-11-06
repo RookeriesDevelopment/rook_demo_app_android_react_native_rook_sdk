@@ -10,14 +10,8 @@ export const PermissionsScreen = () => {
     ready,
     checkAvailability,
     openHealthConnectSettings,
-    hasAllPermissions,
-    requestAllPermissions,
-    hasSleepPermissions,
-    requestSleepPermissions,
-    hasPhysicalPermissions,
-    requestPhysicalPermissions,
-    hasBodyPermissions,
-    requestBodyPermissions,
+    checkPermissions,
+    requestPermissions,
   } = useRookSyncPermissions();
 
   const handleAvailability = async (): Promise<void> => {
@@ -40,7 +34,7 @@ export const PermissionsScreen = () => {
 
   const handleHasAllPermissions = async (): Promise<void> => {
     try {
-      const result = await hasAllPermissions();
+      const result = await checkPermissions('ALL');
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -49,7 +43,7 @@ export const PermissionsScreen = () => {
 
   const handleRequestAllPermissions = async (): Promise<void> => {
     try {
-      const result = await requestAllPermissions();
+      const result = await requestPermissions('ALL');
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -58,7 +52,7 @@ export const PermissionsScreen = () => {
 
   const handleHasSleepPermissions = async (): Promise<void> => {
     try {
-      const result = await hasSleepPermissions();
+      const result = await checkPermissions('SLEEP');
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -67,7 +61,7 @@ export const PermissionsScreen = () => {
 
   const handleRequestSleepPermissions = async (): Promise<void> => {
     try {
-      const result = await requestSleepPermissions();
+      const result = await requestPermissions('SLEEP');
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -76,7 +70,7 @@ export const PermissionsScreen = () => {
 
   const handleHasPhysicalPermissions = async (): Promise<void> => {
     try {
-      const result = await hasPhysicalPermissions();
+      const result = await checkPermissions('PHYSICAL');
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -85,7 +79,7 @@ export const PermissionsScreen = () => {
 
   const handleRequestPhysicalPermissions = async (): Promise<void> => {
     try {
-      const result = await requestPhysicalPermissions();
+      const result = await requestPermissions('PHYSICAL');
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -94,7 +88,7 @@ export const PermissionsScreen = () => {
 
   const handleHasBodyPermissions = async (): Promise<void> => {
     try {
-      const result = await hasBodyPermissions();
+      const result = await checkPermissions('BODY');
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -103,7 +97,7 @@ export const PermissionsScreen = () => {
 
   const handleRequestBodyPermissions = async (): Promise<void> => {
     try {
-      const result = await requestBodyPermissions();
+      const result = await requestPermissions('BODY');
       console.log(result);
     } catch (error) {
       console.log(error);
