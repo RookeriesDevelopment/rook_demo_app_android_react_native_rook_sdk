@@ -18,6 +18,7 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="jbr-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
@@ -27,6 +28,7 @@
             <option value="$PROJECT_DIR$/../node_modules/react-native-gesture-handler/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-mmkv/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-reanimated/android" />
+            <option value="$PROJECT_DIR$/../node_modules/react-native-rook-sdk-health-connect/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-safe-area-context/android" />
             <option value="$PROJECT_DIR$/../node_modules/react-native-screens/android" />
           </set>
