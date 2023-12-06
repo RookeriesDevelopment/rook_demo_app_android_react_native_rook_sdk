@@ -8,6 +8,7 @@ import { useTheme } from '../hooks';
 import MainNavigator from './Main';
 import { useFlipper } from '@react-navigation/devtools';
 import { RookSyncGate } from 'react-native-rook-sdk-health-connect';
+import { credentials } from '@/utils/credentials';
 
 // @refresh reset
 const ApplicationNavigator = () => {
@@ -21,8 +22,8 @@ const ApplicationNavigator = () => {
   return (
     <RookSyncGate
       environment="production"
-      clientUUID="9593d0ec-47c1-4477-a8ce-10d3f4f43127"
-      password="YR9GoQ3mP0zey5nZ9w3WHQMvtvFvMdnefblx"
+      clientUUID={credentials.uuid}
+      password={credentials.password}
     >
       <SafeAreaView style={[Layout.fill, { backgroundColor: colors.card }]}>
         <NavigationContainer theme={NavigationTheme} ref={navigationRef}>
