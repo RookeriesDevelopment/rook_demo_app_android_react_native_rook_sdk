@@ -21,7 +21,7 @@ const ApplicationNavigator = () => {
 
   return (
     <RookSyncGate
-      environment="production"
+      environment="sandbox"
       clientUUID={credentials.uuid}
       password={credentials.password}
     >
