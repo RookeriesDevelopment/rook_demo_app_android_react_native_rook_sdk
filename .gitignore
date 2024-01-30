@@ -63,3 +63,5 @@ yarn-error.log
 .metro-health-check*
 
 src/utils/credentials.ts
+/.idea/
+/android/.idea/
