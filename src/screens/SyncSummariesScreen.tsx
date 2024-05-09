@@ -19,6 +19,7 @@ export const SyncSummariesScreen = () => {
   }, []);
 
   const {
+    syncYesterdaySummaries,
     shouldSyncSleepSummariesFor,
     syncSleepSummary,
     shouldSyncBodySummariesFor,
@@ -29,6 +30,15 @@ export const SyncSummariesScreen = () => {
   } = useRookSyncSummaries();
 
   const { Common, Fonts, Gutters } = useTheme();
+
+  const handleSyncSummaries = async (): Promise<void> => {
+    try {
+      const result = await syncYesterdaySummaries();
+      setData(`${result}`);
+    } catch (error) {
+      setData(`${error}`);
+    }
+  };
 
   const handleShouldSyncSleep = async (): Promise<void> => {
     try {
@@ -108,6 +118,13 @@ export const SyncSummariesScreen = () => {
         />
       </View>
 
+      <TouchableWithoutFeedback onPress={handleSyncSummaries}>
+        <View style={Common.button.rounded}>
+          <Text style={[Fonts.textSmall, Fonts.textCenter, Fonts.textWhite]}>
+            Sync Summaries
+          </Text>
+        </View>
+      </TouchableWithoutFeedback>
       <TouchableWithoutFeedback onPress={handleShouldSyncSleep}>
         <View style={Common.button.rounded}>
           <Text style={[Fonts.textSmall, Fonts.textCenter, Fonts.textWhite]}>

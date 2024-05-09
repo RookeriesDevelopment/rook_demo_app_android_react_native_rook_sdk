@@ -17,6 +17,7 @@ export const EventsScreen = () => {
 
   const {
     ready,
+    syncYesterdayEvents,
     syncPhysicalEvents,
     syncBloodGlucoseEvents,
     syncBloodPressureEvents,
@@ -30,6 +31,16 @@ export const EventsScreen = () => {
     syncTemperatureEvents,
     syncPendingEvents,
   } = useRookSyncEvents();
+
+  const handleSyncEvents = async (): Promise<void> => {
+    try {
+      setData('Loading . . .');
+      const result = await syncYesterdayEvents();
+      setData(`Result: ${result}`);
+    } catch (error) {
+      setData(`${error}`);
+    }
+  };
 
   const handleSyncPhysicalEvents = async (): Promise<void> => {
     try {
@@ -141,7 +152,7 @@ export const EventsScreen = () => {
     }
   };
 
-  const handleSyncEvents = async (): Promise<void> => {
+  const handleSyncFailedEvents = async (): Promise<void> => {
     try {
       setData('Loading . . .');
       const result = await syncPendingEvents();
@@ -161,6 +172,14 @@ export const EventsScreen = () => {
           onChangeText={setDate}
         />
       </View>
+
+      <TouchableWithoutFeedback onPress={handleSyncEvents}>
+        <View style={Common.button.rounded}>
+          <Text style={[Fonts.textTiny, Fonts.textWhite, Fonts.textCenter]}>
+            Sync Events
+          </Text>
+        </View>
+      </TouchableWithoutFeedback>
 
       <View style={styles.row}>
         <View style={styles.gridItem}>
@@ -275,7 +294,7 @@ export const EventsScreen = () => {
           </TouchableWithoutFeedback>
         </View>
         <View style={styles.gridItem}>
-          <TouchableWithoutFeedback onPress={handleSyncEvents}>
+          <TouchableWithoutFeedback onPress={handleSyncFailedEvents}>
             <View style={Common.button.rounded}>
               <Text style={[Fonts.textTiny, Fonts.textWhite, Fonts.textCenter]}>
                 Sync Pending Events

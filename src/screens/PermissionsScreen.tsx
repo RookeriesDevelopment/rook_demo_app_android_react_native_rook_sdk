@@ -12,6 +12,7 @@ export const PermissionsScreen = () => {
     openHealthConnectSettings,
     checkPermissions,
     requestPermissions,
+    requestAndroidBackgroundPermissions,
   } = useRookSyncPermissions();
 
   const handleAvailability = async (): Promise<void> => {
@@ -98,6 +99,15 @@ export const PermissionsScreen = () => {
   const handleRequestBodyPermissions = async (): Promise<void> => {
     try {
       const result = await requestPermissions('BODY');
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleRequestBackgroundPermissions = async (): Promise<void> => {
+    try {
+      const result = await requestAndroidBackgroundPermissions();
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -252,6 +262,21 @@ export const PermissionsScreen = () => {
             ]}
           >
             Request Permissions
+          </Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleRequestBackgroundPermissions}>
+        <View style={Common.button.rounded}>
+          <Text
+            style={[
+              Fonts.textSmall,
+              Fonts.textCenter,
+              Fonts.textWhite,
+              Fonts.textBold,
+            ]}
+          >
+            Request Background Permissions
           </Text>
         </View>
       </TouchableWithoutFeedback>

@@ -2502,12 +2502,12 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.yarnpkg.com/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz#92f95616501069d07d10edb2fc37d3e1c65123b7"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-axios@^1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-1.5.1.tgz#11fbaa11fc35f431193a9564109c88c1f27b585f"
-  integrity sha512-Q28iYCWzNHjAm+yEAot5QaAMxhMghWLFVf7rRdwhUI+c2jix2DUXjAHXVi+s1ibs3mjPO/cCgbA++3BjD0vP/A==
+axios@^1.6.8:
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.8.tgz#66d294951f5d988a00e87a0ffb955316a619ea66"
+  integrity sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==
   dependencies:
-    follow-redirects "^1.15.0"
+    follow-redirects "^1.15.6"
     form-data "^4.0.0"
     proxy-from-env "^1.1.0"
 
@@ -3768,10 +3768,10 @@ flow-parser@^0.206.0:
   resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.206.0.tgz#f4f794f8026535278393308e01ea72f31000bfef"
   integrity sha512-HVzoK3r6Vsg+lKvlIZzaWNBVai+FXTX1wdYhz/wVlH13tb/gOdLXmlTqy6odmTBhT5UoWUbq0k8263Qhr9d88w==
 
-follow-redirects@^1.15.0:
-  version "1.15.3"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.3.tgz#fe2f3ef2690afce7e82ed0b44db08165b207123a"
-  integrity sha512-1VzOtuEM8pC9SFU1E+8KfTjZyMztRsgEfwQl44z8A25uy13jSzTj6dyK2Df52iV0vgHCfBwLhDWevLn95w5v6Q==
+follow-redirects@^1.15.6:
+  version "1.15.6"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
+  integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -6190,21 +6190,21 @@ react-native-reanimated@^3.6.2:
     convert-source-map "^2.0.0"
     invariant "^2.2.4"
 
-react-native-rook-logger-react-native@^0.2.10:
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/react-native-rook-logger-react-native/-/react-native-rook-logger-react-native-0.2.10.tgz#2a699f56c475d3a424b77abfd239eb1c42e151da"
-  integrity sha512-AOfhI9D/I7C5Hrk1KljBOKHBDZYNxjHnQMeUXkPHdgcuemaNxBLOzAqjKzLXQYol4sehwctx/0bjjh9GVDhKvg==
+react-native-rook-logger-react-native@^0.3.10:
+  version "0.3.10"
+  resolved "https://registry.yarnpkg.com/react-native-rook-logger-react-native/-/react-native-rook-logger-react-native-0.3.10.tgz#e8be4140e09ccc99bbb6d84be42d12c6e471f034"
+  integrity sha512-Rd3G5Ix048/YmhVUgwIzmVmYWO0yAar1/YXEAs0ctwww248ObFGnu53jEJVIv7I6w8B12c5XZVL7zxhiY5U6Gw==
   dependencies:
     "@xstate/react" "^3.2.2"
-    axios "^1.5.1"
+    axios "^1.6.8"
     xstate "^4.38.2"
 
-react-native-rook-sdk-health-connect@^0.6.4:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/react-native-rook-sdk-health-connect/-/react-native-rook-sdk-health-connect-0.6.4.tgz#7c6ac8fd3ae0d81563f1bd79046343a1755abf2c"
-  integrity sha512-hriB5wH41DJoTYMnV8a2tMIGkj6D5CfiHMz6HYR1h0jY7lKAWHJ32K/Xr4VvD6nT2dtsmRkZGQh1Z7eCjoOA2Q==
+react-native-rook-sdk-health-connect@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/react-native-rook-sdk-health-connect/-/react-native-rook-sdk-health-connect-0.8.0.tgz#d21221f1690750fd1065de904cf76d86e262dd53"
+  integrity sha512-2G5em6YlH8FRWas9AH7OjRdQnEttzI0aJ/XEItOIf1mQq4n0g8WfEnaKxaMOPlpEh9KU023Yy+rnApy5NFHdQg==
   dependencies:
-    react-native-rook-logger-react-native "^0.2.10"
+    react-native-rook-logger-react-native "^0.3.10"
 
 react-native-safe-area-context@^4.8.2:
   version "4.8.2"

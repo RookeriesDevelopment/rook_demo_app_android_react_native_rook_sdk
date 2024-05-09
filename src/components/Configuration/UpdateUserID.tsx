@@ -10,7 +10,10 @@ import {
   AppState,
   StyleSheet,
 } from 'react-native';
-import { useRookSyncConfiguration, useRookSyncSummaries, } from 'react-native-rook-sdk-health-connect';
+import {
+  useRookSyncConfiguration,
+  useRookSyncSummaries,
+} from 'react-native-rook-sdk-health-connect';
 import { useSelector, useDispatch } from 'react-redux';
 
 export const UpdateUserIDConfig = () => {
@@ -26,7 +29,7 @@ export const UpdateUserIDConfig = () => {
     useRookSyncConfiguration();
 
   const appState = useRef(AppState.currentState);
-  const [appStateVisible, setAppStateVisible] = useState(appState.current);
+  const [_, setAppStateVisible] = useState(appState.current);
   const [isSync, setIsSync] = useState(false);
 
   useEffect(() => {
@@ -35,7 +38,7 @@ export const UpdateUserIDConfig = () => {
         appState.current.match(/inactive|background/) &&
         nextAppState === 'active'
       ) {
-        console.log('app became active')
+        console.log('app became active');
         handleUpdateYesterdaySummaries();
       }
 
@@ -48,7 +51,6 @@ export const UpdateUserIDConfig = () => {
     };
   }, []);
 
-
   useEffect(() => {
     if (userID && ready && summariesManager.ready) {
       setCurrentUserID(userID);
@@ -59,9 +61,9 @@ export const UpdateUserIDConfig = () => {
 
   const handleUpdateYesterdaySummaries = async (): Promise<void> => {
     setIsSync(true);
-    console.log('sync ...')
-    const result = await summariesManager.syncYesterdaySummaries();
-    console.log('finish')
+    console.log('sync ...');
+    await summariesManager.syncYesterdaySummaries();
+    console.log('finish');
     setIsSync(false);
   };
 
@@ -100,24 +102,31 @@ export const UpdateUserIDConfig = () => {
   };
 
   const handleSyncView = () => {
-    if(isSync){
-     return  (<View style= {styles.top}>
-      <Text style={[Fonts.textWhite, Fonts.textCenter, Gutters.smallVMargin]}>
-        Sync yesterday summaries ...</Text>
-    </View>);
+    if (isSync) {
+      return (
+        <View style={styles.top}>
+          <Text
+            style={[Fonts.textWhite, Fonts.textCenter, Gutters.smallVMargin]}
+          >
+            Sync yesterday summaries ...
+          </Text>
+        </View>
+      );
     } else {
-      <View></View>
+      <View />;
     }
-  }
+  };
 
   return (
     <View>
       <View style={Gutters.tinyHMargin}>
-        { handleSyncView() }
+        {handleSyncView()}
         <Text style={[Fonts.titleSmall, Fonts.textCenter]}>
           Configure your user id
         </Text>
-        <Text style={[Fonts.textSmall, Fonts.textWhite]}>Current User ID: {currentUserID} </Text>
+        <Text style={[Fonts.textSmall, Fonts.textWhite]}>
+          Current User ID: {currentUserID}{' '}
+        </Text>
         <TextInput
           style={[Fonts.textSmall, Fonts.textWhite, Common.input.base]}
           value={currentUserID}
@@ -180,4 +189,4 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
-})
+});

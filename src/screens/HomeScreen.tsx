@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from '@react-navigation/native';
 import { View, Text } from 'react-native';
 import { useTheme } from '@/hooks';
 import { UpdateUserID } from '@/components';
+import { useRookSyncConfiguration } from 'react-native-rook-sdk-health-connect';
 
 export const HomeScreen = () => {
   const { Common, Fonts, Gutters } = useTheme();
+  const { ready, scheduleYesterdaySync } = useRookSyncConfiguration();
+
+  useEffect(() => {
+    if (ready) {
+      scheduleYesterdaySync('latest').then(console.log).catch(console.log);
+    }
+  }, [ready]);
 
   return (
     <View>
