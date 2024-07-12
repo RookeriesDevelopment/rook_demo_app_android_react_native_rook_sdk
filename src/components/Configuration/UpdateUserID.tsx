@@ -101,26 +101,19 @@ export const UpdateUserIDConfig = () => {
     }
   };
 
-  const handleSyncView = () => {
-    if (isSync) {
-      return (
-        <View style={styles.top}>
-          <Text
-            style={[Fonts.textWhite, Fonts.textCenter, Gutters.smallVMargin]}
-          >
-            Sync yesterday summaries ...
-          </Text>
-        </View>
-      );
-    } else {
-      <View />;
-    }
-  };
-
   return (
     <View>
       <View style={Gutters.tinyHMargin}>
-        {handleSyncView()}
+        {isSync && (
+          <View style={styles.top}>
+            <Text
+              style={[Fonts.textWhite, Fonts.textCenter, Gutters.smallVMargin]}
+            >
+              Sync yesterday summaries ...
+            </Text>
+          </View>
+        )}
+
         <Text style={[Fonts.titleSmall, Fonts.textCenter]}>
           Configure your user id
         </Text>
