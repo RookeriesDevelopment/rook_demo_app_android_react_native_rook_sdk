@@ -4,6 +4,7 @@ import {
   EventsScreen,
   HomeScreen,
   PermissionsScreen,
+  SourcesScreen,
   SyncSummariesScreen,
 } from '@/screens';
 
@@ -16,6 +17,7 @@ const MainNavigator = () => {
       <Stack.Screen name="Permissions" component={PermissionsScreen} />
       <Stack.Screen name="Summaries" component={SyncSummariesScreen} />
       <Stack.Screen name="Events" component={EventsScreen} />
+      <Stack.Screen name="Sources" component={SourcesScreen} />
     </Stack.Navigator>
   );
 };

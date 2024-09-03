@@ -35,70 +35,16 @@ export const PermissionsScreen = () => {
 
   const handleHasAllPermissions = async (): Promise<void> => {
     try {
-      const result = await checkPermissions('ALL');
+      const result = await checkPermissions();
       console.log(result);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleRequestAllPermissions = async (): Promise<void> => {
+  const handleRequestPermissions = async (): Promise<void> => {
     try {
-      const result = await requestPermissions('ALL');
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleHasSleepPermissions = async (): Promise<void> => {
-    try {
-      const result = await checkPermissions('SLEEP');
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleRequestSleepPermissions = async (): Promise<void> => {
-    try {
-      const result = await requestPermissions('SLEEP');
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleHasPhysicalPermissions = async (): Promise<void> => {
-    try {
-      const result = await checkPermissions('PHYSICAL');
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleRequestPhysicalPermissions = async (): Promise<void> => {
-    try {
-      const result = await requestPermissions('PHYSICAL');
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleHasBodyPermissions = async (): Promise<void> => {
-    try {
-      const result = await checkPermissions('BODY');
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleRequestBodyPermissions = async (): Promise<void> => {
-    try {
-      const result = await requestPermissions('BODY');
+      const result = await requestPermissions();
       console.log(result);
     } catch (error) {
       console.log(error);
@@ -156,102 +102,12 @@ export const PermissionsScreen = () => {
               Fonts.textBold,
             ]}
           >
-            Has all Permissions
+            Has Permissions
           </Text>
         </View>
       </TouchableWithoutFeedback>
 
-      <TouchableWithoutFeedback onPress={handleHasSleepPermissions}>
-        <View style={Common.button.rounded}>
-          <Text
-            style={[
-              Fonts.textSmall,
-              Fonts.textCenter,
-              Fonts.textWhite,
-              Fonts.textBold,
-            ]}
-          >
-            Has sleep Permissions
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
-
-      <TouchableWithoutFeedback onPress={handleRequestSleepPermissions}>
-        <View style={Common.button.rounded}>
-          <Text
-            style={[
-              Fonts.textSmall,
-              Fonts.textCenter,
-              Fonts.textWhite,
-              Fonts.textBold,
-            ]}
-          >
-            Request sleep Permissions
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
-
-      <TouchableWithoutFeedback onPress={handleHasPhysicalPermissions}>
-        <View style={Common.button.rounded}>
-          <Text
-            style={[
-              Fonts.textSmall,
-              Fonts.textCenter,
-              Fonts.textWhite,
-              Fonts.textBold,
-            ]}
-          >
-            Has Physical Permissions
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
-
-      <TouchableWithoutFeedback onPress={handleRequestPhysicalPermissions}>
-        <View style={Common.button.rounded}>
-          <Text
-            style={[
-              Fonts.textSmall,
-              Fonts.textCenter,
-              Fonts.textWhite,
-              Fonts.textBold,
-            ]}
-          >
-            Request Physical Permissions
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
-
-      <TouchableWithoutFeedback onPress={handleHasBodyPermissions}>
-        <View style={Common.button.rounded}>
-          <Text
-            style={[
-              Fonts.textSmall,
-              Fonts.textCenter,
-              Fonts.textWhite,
-              Fonts.textBold,
-            ]}
-          >
-            Has Body Permissions
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
-
-      <TouchableWithoutFeedback onPress={handleRequestBodyPermissions}>
-        <View style={Common.button.rounded}>
-          <Text
-            style={[
-              Fonts.textSmall,
-              Fonts.textCenter,
-              Fonts.textWhite,
-              Fonts.textBold,
-            ]}
-          >
-            Request Body Permissions
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
-
-      <TouchableWithoutFeedback onPress={handleRequestAllPermissions}>
+      <TouchableWithoutFeedback onPress={handleRequestPermissions}>
         <View style={Common.button.rounded}>
           <Text
             style={[

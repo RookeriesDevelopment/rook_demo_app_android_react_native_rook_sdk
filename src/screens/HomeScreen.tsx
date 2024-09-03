@@ -67,6 +67,21 @@ export const HomeScreen = () => {
           </Text>
         </Link>
       </View>
+
+      <View style={Common.button.rounded}>
+        <Link to={{ screen: 'Sources' }}>
+          <Text
+            style={[
+              Fonts.textSmall,
+              Fonts.textCenter,
+              Fonts.textWhite,
+              Fonts.textBold,
+            ]}
+          >
+            Include other sources
+          </Text>
+        </Link>
+      </View>
     </View>
   );
 };

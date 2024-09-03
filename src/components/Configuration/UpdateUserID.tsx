@@ -1,71 +1,24 @@
 import { useTheme } from '@/hooks';
-import { UserState, changeUserID } from '@/store/user';
-import React, { useEffect, useState, useRef } from 'react';
+import { changeUserID } from '@/store/user';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   TextInput,
   ToastAndroid,
   TouchableWithoutFeedback,
-  AppState,
-  StyleSheet,
 } from 'react-native';
-import {
-  useRookSyncConfiguration,
-  useRookSyncSummaries,
-} from 'react-native-rook-sdk-health-connect';
-import { useSelector, useDispatch } from 'react-redux';
+import { useRookSyncConfiguration } from 'react-native-rook-sdk-health-connect';
+import { useDispatch } from 'react-redux';
 
 export const UpdateUserIDConfig = () => {
   const [currentUserID, setCurrentUserID] = useState('User id');
-  const summariesManager = useRookSyncSummaries();
 
   const { Fonts, Gutters, Common } = useTheme();
   const dispatch = useDispatch();
 
-  const { userID } = useSelector((state: { user: UserState }) => state.user);
-
-  const { ready, updateUserID, clearUserID, syncUserTimeZone } =
+  const { updateUserID, clearUserID, syncUserTimeZone } =
     useRookSyncConfiguration();
-
-  const appState = useRef(AppState.currentState);
-  const [_, setAppStateVisible] = useState(appState.current);
-  const [isSync, setIsSync] = useState(false);
-
-  useEffect(() => {
-    const subscription = AppState.addEventListener('change', nextAppState => {
-      if (
-        appState.current.match(/inactive|background/) &&
-        nextAppState === 'active'
-      ) {
-        console.log('app became active');
-        handleUpdateYesterdaySummaries();
-      }
-
-      appState.current = nextAppState;
-      setAppStateVisible(appState.current);
-    });
-
-    return () => {
-      subscription.remove();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (userID && ready && summariesManager.ready) {
-      setCurrentUserID(userID);
-      updateUserID(userID).catch();
-      handleUpdateYesterdaySummaries();
-    }
-  }, [userID, ready, summariesManager.ready]);
-
-  const handleUpdateYesterdaySummaries = async (): Promise<void> => {
-    setIsSync(true);
-    console.log('sync ...');
-    await summariesManager.syncYesterdaySummaries();
-    console.log('finish');
-    setIsSync(false);
-  };
 
   const handleUpdateUserId = async (): Promise<void> => {
     try {
@@ -104,16 +57,6 @@ export const UpdateUserIDConfig = () => {
   return (
     <View>
       <View style={Gutters.tinyHMargin}>
-        {isSync && (
-          <View style={styles.top}>
-            <Text
-              style={[Fonts.textWhite, Fonts.textCenter, Gutters.smallVMargin]}
-            >
-              Sync yesterday summaries ...
-            </Text>
-          </View>
-        )}
-
         <Text style={[Fonts.titleSmall, Fonts.textCenter]}>
           Configure your user id
         </Text>
@@ -137,7 +80,7 @@ export const UpdateUserIDConfig = () => {
               Fonts.textBold,
             ]}
           >
-            Actualizar UserID
+            Update UserID
           </Text>
         </View>
       </TouchableWithoutFeedback>
@@ -174,12 +117,3 @@ export const UpdateUserIDConfig = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  top: {
-    backgroundColor: 'grey',
-    borderWidth: 5,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-  },
-});
