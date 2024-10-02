@@ -19,38 +19,17 @@ export const SyncSummariesScreen = () => {
   }, []);
 
   const {
-    shouldSyncSleepSummariesFor,
     syncSleepSummary,
-    shouldSyncBodySummariesFor,
     syncBodySummary,
-    shouldSyncPhysicalSummariesFor,
     syncPhysicalSummary,
     syncPendingSummaries,
   } = useRookSyncSummaries();
 
   const { Common, Fonts, Gutters } = useTheme();
 
-  const handleShouldSyncSleep = async (): Promise<void> => {
-    try {
-      const result = await shouldSyncSleepSummariesFor(date);
-      setData(`${result}`);
-    } catch (error) {
-      setData(`${error}`);
-    }
-  };
-
   const handleSyncSleep = async (): Promise<void> => {
     try {
       const result = await syncSleepSummary(date);
-      setData(`${result}`);
-    } catch (error) {
-      setData(`${error}`);
-    }
-  };
-
-  const handleShouldSyncBody = async (): Promise<void> => {
-    try {
-      const result = await shouldSyncBodySummariesFor(date);
       setData(`${result}`);
     } catch (error) {
       setData(`${error}`);
@@ -62,15 +41,6 @@ export const SyncSummariesScreen = () => {
       setData('Loading . . .');
       getUserID().then(console.log);
       const result = await syncBodySummary(date);
-      setData(`${result}`);
-    } catch (error) {
-      setData(`${error}`);
-    }
-  };
-
-  const handleShouldSyncPhysical = async (): Promise<void> => {
-    try {
-      const result = await shouldSyncPhysicalSummariesFor(date);
       setData(`${result}`);
     } catch (error) {
       setData(`${error}`);
@@ -108,25 +78,10 @@ export const SyncSummariesScreen = () => {
         />
       </View>
 
-      <TouchableWithoutFeedback onPress={handleShouldSyncSleep}>
-        <View style={Common.button.rounded}>
-          <Text style={[Fonts.textSmall, Fonts.textCenter, Fonts.textWhite]}>
-            Should Sync Sleep?
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
       <TouchableWithoutFeedback onPress={handleSyncSleep}>
         <View style={Common.button.rounded}>
           <Text style={[Fonts.textSmall, Fonts.textCenter, Fonts.textWhite]}>
             Sync Sleep
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
-
-      <TouchableWithoutFeedback onPress={handleShouldSyncBody}>
-        <View style={Common.button.rounded}>
-          <Text style={[Fonts.textSmall, Fonts.textCenter, Fonts.textWhite]}>
-            Should Sync body?
           </Text>
         </View>
       </TouchableWithoutFeedback>
@@ -138,14 +93,6 @@ export const SyncSummariesScreen = () => {
           </Text>
         </View>
       </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPress={handleShouldSyncPhysical}>
-        <View style={Common.button.rounded}>
-          <Text style={[Fonts.textSmall, Fonts.textCenter, Fonts.textWhite]}>
-            Should Sync Physical?
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
-
       <TouchableWithoutFeedback onPress={handleSyncPhysical}>
         <View style={Common.button.rounded}>
           <Text style={[Fonts.textSmall, Fonts.textCenter, Fonts.textWhite]}>

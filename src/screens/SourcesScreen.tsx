@@ -6,7 +6,7 @@ import { useRookDataSources } from 'react-native-rook-sdk-health-connect';
 export const SourcesScreen = () => {
   const { Common, Fonts } = useTheme();
 
-  const { getAvailableDataSources, presentDataSourcesView } =
+  const { getAvailableDataSources, presentDataSourcesView, revokeDataSource } =
     useRookDataSources();
 
   const handleSources = async () => {
@@ -36,6 +36,14 @@ export const SourcesScreen = () => {
     }
   };
 
+  const handleRevoke = async () => {
+    try {
+      await revokeDataSource('Fitbit');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <View>
       <TouchableWithoutFeedback onPress={handleSources}>
@@ -50,6 +58,14 @@ export const SourcesScreen = () => {
         <View style={Common.button.rounded}>
           <Text style={[Fonts.textSmall, Fonts.textCenter, Fonts.textWhite]}>
             Present Data Sources View
+          </Text>
+        </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback onPress={handleRevoke}>
+        <View style={Common.button.rounded}>
+          <Text style={[Fonts.textSmall, Fonts.textCenter, Fonts.textWhite]}>
+            Revoke Fitbit
           </Text>
         </View>
       </TouchableWithoutFeedback>
