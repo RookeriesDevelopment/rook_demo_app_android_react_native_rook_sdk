@@ -1,6 +1,6 @@
 import { useTheme } from '@/hooks';
 import { changeUserID } from '@/store/user';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -17,8 +17,16 @@ export const UpdateUserIDConfig = () => {
   const { Fonts, Gutters, Common } = useTheme();
   const dispatch = useDispatch();
 
-  const { updateUserID, clearUserID, syncUserTimeZone } =
+  const { ready, updateUserID, clearUserID, syncUserTimeZone, getUserID } =
     useRookSyncConfiguration();
+
+  useEffect(() => {
+    if (ready) {
+      getUserID()
+        .then(userID => setCurrentUserID(userID))
+        .catch(console.log);
+    }
+  }, [ready]);
 
   const handleUpdateUserId = async (): Promise<void> => {
     try {

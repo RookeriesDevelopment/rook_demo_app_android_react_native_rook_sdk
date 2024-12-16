@@ -11,7 +11,7 @@ export const HomeScreen = () => {
 
   useEffect(() => {
     if (ready) {
-      scheduleYesterdaySync('latest').then(console.log).catch(console.log);
+      scheduleYesterdaySync().then(console.log).catch(console.log);
     }
   }, [ready]);
 

@@ -39,6 +39,7 @@ export const SourcesScreen = () => {
   const handleRevoke = async () => {
     try {
       await revokeDataSource('Fitbit');
+      console.log('deleted successfully');
     } catch (error) {
       console.log(error);
     }
